@@ -1,19 +1,18 @@
 require("dotenv").config();
 require("./config/mongo");
-
+const cors = require('cors');
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
 // const userRouter = require('./routes/user');
 
 const app = express();
 
 
-app.use(cors())
+app.use(cors('*'))
 
 const server = app.listen(3001);
 
@@ -45,8 +44,6 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

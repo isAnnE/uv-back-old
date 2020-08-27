@@ -14,7 +14,7 @@ const app = express();
 
 app.use(cors('*'))
 
-const server = app.listen(3001);
+const server = app.listen(8888);
 
 
 
